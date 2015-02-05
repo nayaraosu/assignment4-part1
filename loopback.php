@@ -8,29 +8,54 @@
 <body>
    <?php 
     
-        if (count($_GET) == 0)
+
+        function buildJson($method)
         {
-            $json_array  = array("Type" => "GET", "parameters" => null );
-            $json_obj = json_encode($json_array);
-        }
-        else
-        {
-            $tmp = array();
-            foreach ($_GET as $key => $value) 
+            $jug_printed = false;
+            if($method == "GET")
             {
-                if($value == "")
+                $request = $_GET;
+                $type = "GET";
+            }
+            elseif ($method == "POST")
+            {
+                $request = $_POST;
+                $type = "POST";
+            }
+            
+            if (count($request) == 0)
                 {
-                    $tmp[$key] = null;
+                    $json_array  = array("Type" => $type, "parameters" => null );
+                    $json_obj = json_encode($json_array);
                 }
                 else
                 {
-                    $tmp[$key] = $value;
+                    $tmp = array();
+                    foreach ($request as $key => $value) 
+                    {
+                        if($value == "")
+                        {
+                            echo "<b>WARNING: </b>There is no associated value for $key. Please deal with the issue. For now, setting the value to NULL.<br>";
+                            if($jug_printed == false)
+                            {
+                                echo '<img src="dealwithit.jpg" ><br>';
+                                $jug_printed = true;
+                            }
+                            $tmp[$key] = null;
+                        }
+                        else
+                        {
+                            $tmp[$key] = $value;
+                        }
+                    }
+                    $json_array  = array("Type" => $type , "parameters" => $tmp );
+                    $json_obj = json_encode($json_array);
                 }
-            }
-            $json_array  = array("Type" => "GET" , "parameters" => $tmp );
-            $json_obj = json_encode($json_array);
-        }
-        echo $json_obj;
+                echo $json_obj;
+        };      
+        
+        buildJson($_SERVER['REQUEST_METHOD']);
+
    ?> 
 
 </body>

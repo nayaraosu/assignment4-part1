@@ -12,11 +12,6 @@
     $max_mcand = $_GET['max-multiplicand'];
     $min_mplier = $_GET['min-multiplier'];
     $max_mplier = $_GET['max-multiplier'];
-    echo "<h1>$min_mcand</h1>";
-    echo "<h1>$max_mcand</h1>";
-    echo "<h1>$min_mplier</h1>";
-    echo "<h1>$max_mplier</h1>";
-
     $valid_input = true;
     $tmp =  is_int($min_mcand);
     echo $tmp;
@@ -47,9 +42,9 @@
     }
     function createTable($mcand_min, $mcand_max, $mplier_min, $mplier_max)
     {
-        echo "<table>";
+        echo '<table border="1">';
         echo "<tr><td></td>";
-        $first_col = $mplier_min;
+        $first_col = $mcand_min;
         for($i = $mplier_min; $i<=$mplier_max; $i++)
         {
           echo "<td>$i</td>";
