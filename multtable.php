@@ -15,6 +15,13 @@
     $valid_input = true;
     $tmp =  is_int($min_mcand);
     echo $tmp;
+    if (!isset($_GET['min-multiplicand']) || !isset($_GET['max-multiplicand']) || !isset($_GET['min-multiplier']) ||!isset($_GET['max-multiplier']) )
+    {
+      echo "You are missing one or more parameters. Please fix this.";
+      $valid_input = false;
+    }
+    else
+    {
     if(ctype_digit($min_mcand) != TRUE)
     {
 
@@ -22,6 +29,7 @@
 
     }
 
+    // TODO: VALID NUMBER CHECKS
 
     if ($min_mcand > $max_mcand) 
     {
@@ -34,6 +42,7 @@
       echo "<h1>Minimum multipler larger than maximum.</h1>";
       $valid_input = false;
 
+    }
     }
 
     if($valid_input)
