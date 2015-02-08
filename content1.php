@@ -1,6 +1,5 @@
 <?php
     session_start();
-    
     if(session_status() == PHP_SESSION_ACTIVE)
     {
 
@@ -26,6 +25,14 @@
         elseif(isset($_SESSION['username']))
         {
             $valid_login = true;
+        }
+        else
+        {
+            $filepath = explode('/', $_SERVER['PHP_SELF'], -1);
+            $filepath = implode('/', $filepath);
+            $redirect = "http://".$_SERVER['HTTP_HOST'].$filepath;
+            header("Location: {$redirect}/login.php", true);
+            die();
         }
 
         if (!isset($_SESSION['visits'])) 
