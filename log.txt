@@ -1,0 +1,43 @@
+Start: Sat, 7 Feb 2015 19:19:41 -0800  
+End: Sat, 7 Feb 2015 19:38:40 -0800 
+Tasks: formatting adjustment
+
+Start: Sat, 7 Feb 2015 19:00:00 -0800  
+End: Sat, 7 Feb 2015 19:19:41 -0800 
+Tasks: code comments
+
+Start: Sat, 7 Feb 2015 18:45:00 -0800  
+End: Sat, 7 Feb 2015 18:56:24 -0800 
+Tasks: content1 redirection
+
+Start: Sat, 7 Feb 2015 17:30:00 -0800  
+End: Sat, 7 Feb 2015 18:44:47 -0800 
+Tasks: validation checks for multtable
+
+Start: Sat, 7 Feb 2015 14:00:00 -0800  
+End: Sat, 7 Feb 2015 15:03:31 -0800 
+Tasks: adjusted validation for multtable
+
+Start: Thu, 5 Feb 2015 16:00:00 -0800 
+End: Thu, 5 Feb 2015 18:54:08 -0800 
+Tasks: lots of additions and bug fixes for login pages
+
+Start: Thu, 5 Feb 2015 13:00:00 -0800  
+End: Thu, 5 Feb 2015 15:10:06 -0800 
+Tasks: added more error handling and PUT logic for loopback
+
+Start: Tue, 3 Feb 2015 17:00:00 -0800
+End: Tue, 3 Feb 2015 17:48:16 -0800 
+Tasks: added validation and json object to loopback.php
+
+Start: Tue, 3 Feb 2015 16:00:00 -0800
+End: Tue, 3 Feb 2015 16:59:20 -0800 
+Tasks: early versions of multtable and loopback
+
+Start: Tue, 3 Feb 2015 08:47:38 -0800
+End: Tue, 3 Feb 2015 08:51:56 -0800 
+Tasks: added log.txt
+
+Start: Tue, 3 Feb 2015 08:00:00 -0800  
+End: Tue, 3 Feb 2015 08:47:38 -0800 
+Tasks: initial commits
