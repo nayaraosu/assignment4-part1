@@ -14,7 +14,7 @@
     // Check to see if parameters exist. If not, warn user and set flag to false
     if (!isset($_GET['min-multiplicand']) || !isset($_GET['max-multiplicand']) || !isset($_GET['min-multiplier']) ||!isset($_GET['max-multiplier']) )
     {
-      echo "You are missing one or more parameters. Please fix this.";
+      echo "<h1>You are missing one or more parameters. Please fix this.<h1>";
       $valid_input = false;
     }
     else
