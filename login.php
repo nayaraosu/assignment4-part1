@@ -1,18 +1,17 @@
-<?php session_start();
+<?php session_start(); // Start session
     
+        // Check to see if logout key:value pair exists
+        // If so, destroy session and redirect
         if(isset($_GET['logout']) && $_GET['logout'] == 'true')
         {
             $_SESSION = array();
             session_destroy();
             $filepath = explode('/', $_SERVER['PHP_SELF'], -1);
             $filepath = implode('/', $filepath);
-            //echo $filepath;
             $redirect = "http://".$_SERVER['HTTP_HOST'].$filepath;
-            //echo $redirect;
             header("Location: {$redirect}/login.php", true);
             die();
         }
-
     ?> 
 
 <!DOCTYPE html>

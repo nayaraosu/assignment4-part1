@@ -1,20 +1,20 @@
 <?php
-    session_start();
+    session_start(); // Start session
+
+    // If session is active, test for username
     if(session_status() == PHP_SESSION_ACTIVE)
     {
 
         if(isset($_POST['username']) && trim($_POST['username']) != "")
         {
-            //if ($_POST['username'] != null || $_POST['username'] != "" )
             {
                 $_SESSION['username'] = $_POST['username'];
-                $_SESSION['logged_in'] = true;
+                $_SESSION['logged_in'] = true; // If this key exists, other pages can use it to test for login state
                 $valid_login = true;
-
-                //$username = $_POST['username'];
-            }
+             }
 
         }
+        // If username is a blank space, warn
         elseif (trim($_POST['username']) != "")
         {
             $login_str = '<a href="login.php?logout=true">Click here to return to the login screen.</a>';
@@ -26,6 +26,7 @@
         {
             $valid_login = true;
         }
+        // If the session is inactive, redirect back to login page
         else
         {
             $filepath = explode('/', $_SERVER['PHP_SELF'], -1);
@@ -34,11 +35,12 @@
             header("Location: {$redirect}/login.php", true);
             die();
         }
-
+        // Set number of visits
         if (!isset($_SESSION['visits'])) 
         {
             $_SESSION['visits'] = 0;
         }
+        //If the login is valid, increment # of visits and display username, visits, and links
         if($valid_login == true)
         {
             $_SESSION['visits']++;

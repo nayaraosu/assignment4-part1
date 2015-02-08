@@ -1,7 +1,10 @@
 <?php
-    session_start();
+    session_start(); // Start session
+
+    // Check for active session and 'logged_in' key
     if(session_status() == PHP_SESSION_ACTIVE)
     {
+        // If logged_in exists and is true, output name and visit counter
         if (isset($_SESSION['logged_in']))
         {   
             if($_SESSION['logged_in'] == true)
@@ -14,6 +17,7 @@
 
             }
         }
+        // If not logged in, redirect back to login page
         else
         {
             $filepath = explode('/', $_SERVER['PHP_SELF'], -1);
