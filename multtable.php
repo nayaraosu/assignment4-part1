@@ -6,15 +6,10 @@
 
 </head>
 <body>
-   <?php 
+  <?php 
 
-    $min_mcand = $_GET['min-multiplicand'];
-    $max_mcand = $_GET['max-multiplicand'];
-    $min_mplier = $_GET['min-multiplier'];
-    $max_mplier = $_GET['max-multiplier'];
     $valid_input = true;
-    $tmp =  is_int($min_mcand);
-    echo $tmp;
+
     if (!isset($_GET['min-multiplicand']) || !isset($_GET['max-multiplicand']) || !isset($_GET['min-multiplier']) ||!isset($_GET['max-multiplier']) )
     {
       echo "You are missing one or more parameters. Please fix this.";
@@ -22,33 +17,51 @@
     }
     else
     {
-    if(ctype_digit($min_mcand) != TRUE)
-    {
+      $min_mcand = $_GET['min-multiplicand'];
+      $max_mcand = $_GET['max-multiplicand'];
+      $min_mplier = $_GET['min-multiplier'];
+      $max_mplier = $_GET['max-multiplier'];
 
-      echo "<h1>$min_mcand is not an integer.</h1>";
+      if(!is_numeric($min_mcand) || strpos($min_mcand, ".") !== false)
+      {
+          echo "<h1>$min_mcand is not an integer</h1><br>";
+          $valid_input = false;
+      }
+      if(!is_numeric($max_mcand) || strpos($max_mcand, ".") !== false)
+      {
+          echo "<h1>$max_mcand is not an integer</h1><br>";
+          $valid_input = false;
+      }
 
+      if(!is_numeric($min_mplier) || strpos($min_mplier, ".") !== false)
+      {
+          echo "<h1>$min_mplier is not an integer</h1><br>";
+          $valid_input = false;
+      }
+
+      if(!is_numeric($max_mplier ) || strpos($max_mplier, ".") !== false)
+      {
+          echo "<h1>$max_mplier is not an integer</h1><br>";
+          $valid_input = false;
+      }
+      if ($min_mcand > $max_mcand) 
+      {
+        echo "<h1>Minimum multiplicand larger than maximum.</h1>";
+        $valid_input = false;
+      }
+
+      if ($min_mplier > $max_mplier)
+      {
+        echo "<h1>Minimum multipler larger than maximum.</h1>";
+        $valid_input = false;
+      }
+    
+      if($valid_input)
+      {
+        createTable($min_mcand, $max_mcand, $min_mplier, $max_mplier); 
+      }
     }
 
-    // TODO: VALID NUMBER CHECKS
-
-    if ($min_mcand > $max_mcand) 
-    {
-      echo "<h1>Minimum multiplicand larger than maximum.</h1>";
-      $valid_input = false;
-    }
-
-    if ($min_mplier > $max_mplier)
-     {
-      echo "<h1>Minimum multipler larger than maximum.</h1>";
-      $valid_input = false;
-
-    }
-    }
-
-    if($valid_input)
-    {
-      createTable($min_mcand, $max_mcand, $min_mplier, $max_mplier); 
-    }
     function createTable($mcand_min, $mcand_max, $mplier_min, $mplier_max)
     {
         echo '<table border="1">';
@@ -71,9 +84,8 @@
           $first_col = $first_col +1;
         }
         echo "</table>";
-
-    }
-   ?> 
+    }    
+  ?> 
 
 </body>
 </html>
